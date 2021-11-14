@@ -1,17 +1,31 @@
-## Build a Voting App
+## Benchmark for Laravel Docker/Sail based apps
 
-Source Code for **"Build a Voting App"** series on Laracasts: https://laracasts.com/series/build-a-voting-app
+The present repo is a clone of the source code for **"Build a Voting App"** 
+series on Laracasts: https://laracasts.com/series/build-a-voting-app.
+This great project is used to measure the performance of different computers with the goal
+of finding the ideal and most efficient laptop for PHP Web Developers.
 
-Each episode has a corresponding commit in git, so checkout the commit history for that. If you would like to go back to a particular point, you can do a `git checkout <hash_of_commit>`.
+## Requirements
+
+You need Docker Desktop or Docker with docker-compose already installed and running
+for the following steps to work. It's important that the benchmarks are run in a Docker
+environment because most modern web development is done like this.
 
 ## Installation
 
-1. Clone the repo and `cd` into it
-1. `composer install`
+1. Clone this repo (laravel_docker_benchmark) and `cd` into it
 1. Rename or copy `.env.example` file to `.env`
-1. `php artisan key:generate`
-1. Setup a database and add your database credentials in your `.env` file
-1. `npm install`
-1. `npm run dev` or `npm run watch`
-1. `php artisan serve` or use Laravel Valet
-1. Visit `localhost:8000` in your browser
+1. `chmod +x ./build.sh`
+1. `./build.sh`
+1. `alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'`
+1. `sail up -d`
+1. `sail artisan key:generate`
+1. `sail artisan migrate`
+1. `sail npm install`
+1. `sail npm run dev`
+
+## Run Benchmarks
+1. `sail artisan db:seed` Take note of the time reported at the end (it's seconds)
+1. `sail artisan test` Take note of the time reported at the end
+
+1. Visit `http://localhost` in your browser

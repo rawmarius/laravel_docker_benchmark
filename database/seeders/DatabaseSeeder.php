@@ -9,6 +9,7 @@ use App\Models\Status;
 use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,12 +20,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $start = Carbon::now();
+
         User::factory()->create([
             'name' => 'Andre',
             'email' => 'andre_madarang@hotmail.com',
         ]);
 
-        User::factory(19)->create();
+        User::factory(1000)->create();
 
         Category::factory()->create(['name' => 'Category 1']);
         Category::factory()->create(['name' => 'Category 2']);
@@ -37,11 +40,11 @@ class DatabaseSeeder extends Seeder
         Status::factory()->create(['name' => 'Implemented']);
         Status::factory()->create(['name' => 'Closed']);
 
-        Idea::factory(100)->existing()->create();
+        Idea::factory(200)->existing()->create();
 
         // Generate unique votes. Ensure idea_id and user_id are unique for each row
-        foreach (range(1, 20) as $user_id) {
-            foreach (range(1, 100) as $idea_id) {
+        foreach (range(1, 1001) as $user_id) {
+            foreach (range(1, 200) as $idea_id) {
                 if ($idea_id % 2 === 0) {
                     Vote::factory()->create([
                         'user_id' => $user_id,
@@ -53,7 +56,12 @@ class DatabaseSeeder extends Seeder
 
         // Generate comments for ideas
         foreach (Idea::all() as $idea) {
-            Comment::factory(5)->existing()->create(['idea_id' => $idea->id]);
+            Comment::factory(10)->existing()->create(['idea_id' => $idea->id]);
         }
+
+        $end = Carbon::now();
+        print_r($start->diffInSeconds($end));
+        echo "\n";
+        
     }
 }
