@@ -28,4 +28,5 @@ environment because most modern web development is done like this.
 1. `sail artisan db:seed` Take note of the time reported at the end (it's seconds)
 1. `sail artisan test` Take note of the time reported at the end
 
-1. Visit `http://localhost` in your browser
+## Try out the app
+1. Visit `http://localhost` in your browser if you're curious about the app itself.
