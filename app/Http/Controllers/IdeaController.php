@@ -15,7 +15,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        return view('idea.index');
+        return Idea::paginate();
     }
 
     /**
