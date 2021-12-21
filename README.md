@@ -17,16 +17,15 @@ environment because most modern web development is done like this.
 1. Rename or copy `.env.example` file to `.env`
 1. `chmod +x ./build.sh`
 1. `./build.sh`
-1. `alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'`
-1. `sail up -d`
-1. `sail artisan key:generate`
-1. `sail artisan migrate`
-1. `sail npm install`
-1. `sail npm run dev`
+1. `./sail up -d`
+1. `./sail artisan key:generate`
+1. `./sail artisan migrate`
+1. `./sail npm install`
+1. `./sail npm run dev`
 
 ## Run Benchmarks
-1. `sail artisan db:seed` Take note of the time reported at the end (it's seconds)
-1. `sail artisan test` Take note of the time reported at the end
+1. `./sail artisan db:seed` Take note of the time reported at the end (it's seconds)
+1. `./sail artisan test` Take note of the time reported at the end
 
 ## Try out the app
 1. Visit `http://localhost` in your browser if you're curious about the app itself.
